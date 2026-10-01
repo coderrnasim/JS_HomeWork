@@ -48,7 +48,6 @@ function controlLight(isOn) {
 }
 
 // 2. Icecream Selection Logic
-// ফ্লেভার কালার কনফিগারেশন
 const flavorColors = {
     strawberry: { bg: '#db2777', text: '#ffffff', border: '#f472b6' }, // Pink
     vanilla:    { bg: '#fef3c7', text: '#0f172a', border: '#fde68a' }, // Soft Yellow
@@ -57,7 +56,6 @@ const flavorColors = {
     lemon:      { bg: '#65a30d', text: '#ffffff', border: '#a3e635' }  // Citrus Green
 };
 
-// ওয়েবসাইট লোড হলে ডিফল্টভাবে Strawberry সিলেক্টেড থাকবে
 window.addEventListener('DOMContentLoaded', () => {
     showIcecream('Strawberry', 'images/strawberry.png', 'strawberry');
 });
@@ -66,12 +64,10 @@ function showIcecream(name, imagePath, flavorKey) {
     const imgElement = document.getElementById('icecream-img');
     const titleElement = document.getElementById('icecream-title');
 
-    // ১. ইমেজ ও টাইটেল পরিবর্তন
     if (imgElement) {
     imgElement.style.transform = 'scale(0.95)';
     imgElement.style.opacity = '0.8';
 
-    // সময় ১৫০০ms / ১৫০ms থেকে কমিয়ে ৩০ms করা হয়েছে (সাথে সাথে রেসপন্স করার জন্য)
     setTimeout(() => {
         imgElement.src = imagePath;
         imgElement.alt = `${name} Icecream`;
@@ -84,7 +80,6 @@ function showIcecream(name, imagePath, flavorKey) {
         titleElement.innerText = `${name} Icecream`;
     }
 
-    // ২. সকল বাটনকে রিস্টোর/ইনঅ্যাক্টিভ করা
     const allBtns = document.querySelectorAll('.flavor-btn');
     allBtns.forEach(btn => {
         btn.style.backgroundColor = 'rgba(15, 23, 42, 0.8)'; // Dark slate background
@@ -94,7 +89,6 @@ function showIcecream(name, imagePath, flavorKey) {
         btn.style.transform = 'scale(1)';
     });
 
-    // ৩. সিলেক্টেড বাটনকে স্থায়ী কালারে হাইলাইট করা
     const activeBtn = document.getElementById(`btn-${flavorKey}`);
     const activeColor = flavorColors[flavorKey];
 
@@ -120,7 +114,6 @@ function setDayNight(mode) {
 
     if (mode === 'day') {
         
-        // ডে মোডে ১০০% নরমাল আলো
         if (bgImg) {
             bgImg.style.filter = 'brightness(1) contrast(1)';
         }
@@ -134,9 +127,9 @@ function setDayNight(mode) {
 
     } else if (mode === 'night') {
         
-        // নাইট মোডে ঠিক ২০% ভিজিবল রাখা (brightness 0.20)
+
         if (bgImg) {
-            bgImg.style.filter = 'brightness(0.17) contrast(1.1)';
+            bgImg.style.filter = 'brightness(0.33) contrast(1.1)';
         }
 
         if (btnNight) {
@@ -149,7 +142,6 @@ function setDayNight(mode) {
 }
 
 // 4. Burger Selection Logic
-// Function to Change Burger Patty Dynamically
 function changePatty(imageName, titleText, btnElement) {
     const pattyImg = document.getElementById('burger-patty-img');
     const statusText = document.getElementById('burger-status');

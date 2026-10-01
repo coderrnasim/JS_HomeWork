@@ -11,13 +11,13 @@
 </head>
 <!-- বডিতে হাইট ও প্যাডিং অ্যাডজাস্ট করুন -->
 
-<body class="bg-[#0c0905] text-[#fef3c7] h-screen overflow-hidden flex flex-col p-3 lg:p-6">
+<body class="bg-[#0c0905] text-[#fef3c7] min-h-screen overflow-y-auto flex flex-col p-3 lg:p-6">
 
     <div class="w-full max-w-[1700px] mx-auto h-full flex flex-col justify-between">
 
         <!-- Header -->
-        <header class="text-center py-1 flex-none">
-            <h1 class="text-xl sm:text-3xl lg:text-4xl font-bold text-amber-400">✨ Class # 22 Home work</h1>
+        <header class="text-center mb-4 py-1 flex-none">
+            <h1 class="text-xl sm:text-3xl lg:text-4xl font-bold text-amber-400">✨ Class # 22 Home work ✨</h1>
         </header>
 
         <!-- খ) গ্রিড কন্টেইনারে h-full এবং flex-grow ব্যবহার করা যাতে পুরো জায়গাটা নেয় -->
@@ -36,7 +36,7 @@
                         class="w-48 sm:w-64 lg:w-80 h-auto mx-auto object-contain z-10 relative">
 
                     <!-- ২. লাইটের ঠিক নিচের অংশের তীব্র আলো (Light Beam/Glow) -->
-                    <div id="light-beam" class="w-full h-40 mt-3 rounded-full transition-all duration-0"
+                    <div id="light-beam" class="w-full h-28 rounded-full transition-all duration-0"
                         style="background: radial-gradient(ellipse at top, rgba(255, 255, 255, 1) 0%, rgba(231, 224, 204, 0.9) 35%, rgba(247, 244, 240, 0.4) 65%, transparent 80%); filter: blur(8px);">
                     </div>
                 </div>
@@ -136,18 +136,15 @@
             </div>
 
             <!-- 4. BURGER TYPES MENU SECTION -->
-            <!-- Card 4: Burger Stack Customizer -->
-            <div
-                class="bg-slate-900 border border-slate-800 rounded-2xl p-4 sm:p-6 shadow-xl flex flex-col justify-between h-full">
+            <div class="bg-[#18120a]/80 backdrop-blur-sm rounded-2xl border border-[#3a2817] shadow-xl overflow-hidden group hover:border-[#d97706]/40 transition-all flex flex-col justify-between">
 
                 <!-- Title Section -->
-                <div class="text-center mb-4">
+                <div class="text-center mt-5 mb-4">
                     <h2
                         class="text-xl sm:text-2xl font-bold text-amber-400 mb-1 flex items-center justify-center gap-2">
-                        <span>🍔</span> Dynamic Burger Craft
+                        <span>🍔</span> Dynamic Burger
                     </h2>
-                    <p id="burger-status" class="text-xs sm:text-sm text-slate-400 font-medium">Select a patty to
-                        customize your burger</p>
+                    
                 </div>
 
                 <!-- Burger Visual Container (Fixed Bun + Dynamic Middle) -->
@@ -156,12 +153,12 @@
 
                     <!-- Top Bun (Fixed) -->
                     <img src="images/TopBun.png" alt="Top Bun"
-                        class="w-full max-w-[280px] sm:max-w-[300px] h-auto object-contain z-30 drop-shadow-lg -mb-6 sm:-mb-10 transition-transform duration-300 pointer-events-none" />
+                        class="w-full max-w-[280px] sm:max-w-[300px] h-auto object-contain z-30 drop-shadow-lg -mb-6 sm:-mb-8 transition-transform duration-300 pointer-events-none" />
 
                     <!-- Dynamic Middle Patty Layer -->
                     <div
                         class="w-full max-w-[280px] sm:max-w-[300px] flex items-center justify-center z-20 min-h-[90px] sm:min-h-[110px] overflow-hidden">
-                        <img id="burger-patty-img" src="images/Chicken_patty.png" alt="Selected Patty"
+                        <img id="burger-patty-img" src="images/Cheese_patty.png" alt="Selected Patty"
                             class="w-full h-auto object-contain transition-all duration-500 transform scale-100 opacity-100 drop-shadow-md" />
                     </div>
 
@@ -171,10 +168,8 @@
                 </div>
 
                 <!-- Selection Buttons -->
-                <div class="mt-4 pt-4 border-t border-slate-800/80">
-                    <label
-                        class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2 text-center">Select
-                        Patty Style</label>
+                <div class="m-4">
+                    
                     <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
                         <button onclick="changePatty('images/Cheese_patty.png', 'Cheese Patty Loaded', this)"
                             class="patty-btn active-patty-btn bg-amber-500 text-slate-950 font-bold py-2 px-2 text-xs sm:text-sm rounded-xl transition-all duration-200 shadow-md">
