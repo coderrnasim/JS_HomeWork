@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="bn" class="h-full">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amber Glass Interactive Dashboard</title>
+    <!-- লোকাল টেইলউইন্ড সিএসএস ফাইল -->
+    <link href="./dist/output.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<!-- বডিতে হাইট ও প্যাডিং অ্যাডজাস্ট করুন -->
+
+<body class="bg-[#0c0905] text-[#fef3c7] h-screen overflow-hidden flex flex-col p-3 lg:p-6">
+
+    <div class="w-full max-w-[1700px] mx-auto h-full flex flex-col justify-between">
+
+        <!-- Header -->
+        <header class="text-center py-1 flex-none">
+            <h1 class="text-xl sm:text-3xl lg:text-4xl font-bold text-amber-400">✨ Class # 22 Home work</h1>
+        </header>
+
+        <!-- খ) গ্রিড কন্টেইনারে h-full এবং flex-grow ব্যবহার করা যাতে পুরো জায়গাটা নেয় -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 flex-grow items-stretch my-auto">
+
+            <!-- 1. LIGHT ON / OFF SECTION -->
+            <div id="light-card"
+                class="amber-glass rounded-2xl p-5 flex flex-col justify-between h-full transition-all duration-500 light-on-glow">
+                <div class="text-center flex-none">
+                    <h2 class="text-lg sm:text-xl font-bold text-amber-300">💡 Light Control</h2>
+                </div>
+
+                <div class="relative text-center mt-0 mb-auto flex flex-col items-center justify-start w-full">
+                    <!-- ১. লাইট ইমেজ -->
+                    <img id="main-light-icon" src="images/light-on.png" alt="Light Bulb"
+                        class="w-48 sm:w-64 lg:w-80 h-auto mx-auto object-contain z-10 relative">
+
+                    <!-- ২. লাইটের ঠিক নিচের অংশের তীব্র আলো (Light Beam/Glow) -->
+                    <div id="light-beam" class="w-full h-40 mt-3 rounded-full transition-all duration-0"
+                        style="background: radial-gradient(ellipse at top, rgba(255, 255, 255, 1) 0%, rgba(231, 224, 204, 0.9) 35%, rgba(247, 244, 240, 0.4) 65%, transparent 80%); filter: blur(8px);">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3 flex-none mt-2">
+                    <button id="btn-light-on" onclick="controlLight(true)"
+                        class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold py-2 sm:py-2.5 rounded-xl transition shadow-lg text-xs sm:text-sm">Light
+                        On</button>
+                    <button id="btn-light-off" onclick="controlLight(false)"
+                        class="bg-slate-900 hover:bg-slate-800 text-amber-400 border border-amber-500/40 font-bold py-2 sm:py-2.5 rounded-xl transition text-xs sm:text-sm">Light
+                        Off</button>
+                </div>
+            </div>
+
+            <!-- 2. ICECREAM TYPES SECTION -->
+            <div class="amber-glass rounded-2xl p-5 flex flex-col justify-between h-full relative overflow-hidden">
+                <!-- Centered Header -->
+                <div class="flex-none text-center">
+                    <h2
+                        class="text-xl sm:text-2xl font-bold text-amber-300 mb-1 flex items-center justify-center gap-2">
+                        🍦 Icecream Types
+                    </h2>
+                </div>
+
+                <!-- Doubled Size Image Display Area -->
+                <div class="my-auto flex flex-col items-center justify-center min-h-[380px] sm:min-h-[420px] py-4">
+                    <!-- 2x Larger Container (w-80 sm:w-96) -->
+                    <div class="w-72 h-72 sm:w-96 sm:h-96 flex items-center justify-center relative">
+                        <img id="icecream-img" src="images/strawberry.png" alt="Icecream"
+                            class="w-full h-full object-contain filter drop-shadow-[0_20px_40px_rgba(0,0,0,0.8)] transition-all duration-500 transform hover:scale-105" />
+                    </div>
+                    <h3 id="icecream-title"
+                        class="text-lg sm:text-xl font-extrabold text-amber-200 tracking-wide mt-4 transition-colors duration-300 text-center">
+                        Strawberry Icecream
+                    </h3>
+                </div>
+
+                <!-- Flavor Selection Buttons -->
+                <div class="grid grid-cols-5 gap-1.5 sm:gap-2 flex-none">
+                    <button id="btn-strawberry"
+                        onclick="showIcecream('Strawberry', 'images/strawberry.png', 'strawberry')"
+                        class="flavor-btn border p-2 rounded-xl text-[10px] sm:text-xs font-bold transition-all duration-300 text-center truncate cursor-pointer">
+                        Strawberry
+                    </button>
+
+                    <button id="btn-vanilla" onclick="showIcecream('Vanilla', 'images/vanilla.png', 'vanilla')"
+                        class="flavor-btn border p-2 rounded-xl text-[10px] sm:text-xs font-bold transition-all duration-300 text-center truncate cursor-pointer">
+                        Vanilla
+                    </button>
+
+                    <button id="btn-chocolate" onclick="showIcecream('Chocolate', 'images/chocolate.png', 'chocolate')"
+                        class="flavor-btn border p-2 rounded-xl text-[10px] sm:text-xs font-bold transition-all duration-300 text-center truncate cursor-pointer">
+                        Chocolate
+                    </button>
+
+                    <button id="btn-kulfi" onclick="showIcecream('Kulfi', 'images/kulfi.png', 'kulfi')"
+                        class="flavor-btn border p-2 rounded-xl text-[10px] sm:text-xs font-bold transition-all duration-300 text-center truncate cursor-pointer">
+                        Kulfi
+                    </button>
+
+                    <button id="btn-lemon" onclick="showIcecream('Lemon', 'images/lemon.png', 'lemon')"
+                        class="flavor-btn border p-2 rounded-xl text-[10px] sm:text-xs font-bold transition-all duration-300 text-center truncate cursor-pointer">
+                        Lemon
+                    </button>
+                </div>
+            </div>
+
+            <!-- 3. DAY NIGHT SELECTOR SECTION -->
+            <div id="daynight-card"
+                class="amber-glass rounded-2xl p-5 flex flex-col justify-between h-full relative overflow-hidden transition-all duration-500">
+
+                <!-- Centered Header -->
+                <div class="flex-none text-center">
+                    <h2 id="dn-title"
+                        class="text-xl sm:text-2xl font-bold text-amber-300 mb-1 transition-colors duration-300">
+                        ☀️🌙 Day Night Mode
+                    </h2>
+                </div>
+
+                <!-- Image Area with 10px Left/Right Padding & Auto Aspect Ratio Height -->
+                <div class="my-auto flex flex-col items-center justify-center w-full px-[4px] py-3">
+                    <img id="dn-bg-img" src="images/DayNight.jpg" alt="Nature View"
+                        class="w-full h-auto object-contain rounded-xl filter drop-shadow-[0_15px_30px_rgba(0,0,0,0.7)] transition-all duration-1000" />
+                </div>
+
+                <!-- Controls -->
+                <div class="grid grid-cols-2 gap-2 sm:gap-3 flex-none relative z-10 mt-2">
+                    <button id="btn-day" onclick="setDayNight('day')"
+                        class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold py-2 sm:py-2.5 rounded-xl shadow-lg text-xs sm:text-sm transition cursor-pointer ring-2 ring-amber-300">
+                        Day Mode
+                    </button>
+                    <button id="btn-night" onclick="setDayNight('night')"
+                        class="bg-slate-900 hover:bg-slate-800 text-amber-400 border border-amber-500/40 font-bold py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm transition cursor-pointer">
+                        Night Mode
+                    </button>
+                </div>
+            </div>
+
+            <!-- 4. BURGER TYPES MENU SECTION -->
+            <!-- Card 4: Burger Stack Customizer -->
+            <div
+                class="bg-slate-900 border border-slate-800 rounded-2xl p-4 sm:p-6 shadow-xl flex flex-col justify-between h-full">
+
+                <!-- Title Section -->
+                <div class="text-center mb-4">
+                    <h2
+                        class="text-xl sm:text-2xl font-bold text-amber-400 mb-1 flex items-center justify-center gap-2">
+                        <span>🍔</span> Dynamic Burger Craft
+                    </h2>
+                    <p id="burger-status" class="text-xs sm:text-sm text-slate-400 font-medium">Select a patty to
+                        customize your burger</p>
+                </div>
+
+                <!-- Burger Visual Container (Fixed Bun + Dynamic Middle) -->
+                <div
+                    class="relative w-full max-w-[340px] mx-auto my-auto flex flex-col items-center justify-center py-4">
+
+                    <!-- Top Bun (Fixed) -->
+                    <img src="images/TopBun.png" alt="Top Bun"
+                        class="w-full max-w-[280px] sm:max-w-[300px] h-auto object-contain z-30 drop-shadow-lg -mb-6 sm:-mb-10 transition-transform duration-300 pointer-events-none" />
+
+                    <!-- Dynamic Middle Patty Layer -->
+                    <div
+                        class="w-full max-w-[280px] sm:max-w-[300px] flex items-center justify-center z-20 min-h-[90px] sm:min-h-[110px] overflow-hidden">
+                        <img id="burger-patty-img" src="images/Chicken_patty.png" alt="Selected Patty"
+                            class="w-full h-auto object-contain transition-all duration-500 transform scale-100 opacity-100 drop-shadow-md" />
+                    </div>
+
+                    <!-- Bottom Bun (Fixed) -->
+                    <img src="images/BottomBun.png" alt="Bottom Bun"
+                        class="w-full max-w-[280px] sm:max-w-[300px] h-auto object-contain z-10 drop-shadow-lg -mt-6 sm:-mt-12 transition-transform duration-300 pointer-events-none" />
+                </div>
+
+                <!-- Selection Buttons -->
+                <div class="mt-4 pt-4 border-t border-slate-800/80">
+                    <label
+                        class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2 text-center">Select
+                        Patty Style</label>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                        <button onclick="changePatty('images/Cheese_patty.png', 'Cheese Patty Loaded', this)"
+                            class="patty-btn active-patty-btn bg-amber-500 text-slate-950 font-bold py-2 px-2 text-xs sm:text-sm rounded-xl transition-all duration-200 shadow-md">
+                            🧀 Cheese
+                        </button>
+                        <button onclick="changePatty('images/Chicken_patty.png', 'Crispy Chicken Patty', this)"
+                            class="patty-btn bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-semibold py-2 px-2 text-xs sm:text-sm rounded-xl transition-all duration-200">
+                            🍗 Chicken
+                        </button>
+                        <button onclick="changePatty('images/Deluxe_patty.png', 'Double Deluxe Patty', this)"
+                            class="patty-btn bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-semibold py-2 px-2 text-xs sm:text-sm rounded-xl transition-all duration-200">
+                            🥩 Deluxe
+                        </button>
+                        <button onclick="changePatty('images/Mushroom_patty.png', 'Mushroom Swiss Patty', this)"
+                            class="patty-btn bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-semibold py-2 px-2 text-xs sm:text-sm rounded-xl transition-all duration-200">
+                            🍄 Mushroom
+                        </button>
+                        <button onclick="changePatty('images/Steak_patty.png', 'Juicy Steak Patty', this)"
+                            class="patty-btn bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-semibold py-2 px-2 text-xs sm:text-sm rounded-xl transition-all duration-200 col-span-2 sm:col-span-1">
+                            🥓 Steak
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- এক্সটার্নাল জাভাস্ক্রিপ্ট ফাইল লিংক -->
+    <script src="./script.js"></script>
+</body>
+
+</html>
